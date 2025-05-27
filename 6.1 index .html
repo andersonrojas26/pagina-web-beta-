@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Registro y Compra</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">Sistema<span>Plus</span></h1>
+            <div class="theme-switcher">
+                <i class="fas fa-moon"></i>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-sun"></i>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <section class="registration-section card">
+                <h2><i class="fas fa-user-plus"></i> Registro de Participantes</h2>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="cedula">Cédula:</label>
+                        <input type="text" id="cedula" required placeholder="Ej: 1234567890">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" required placeholder="Ej: María">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" required placeholder="Ej: González">
+                    </div>
+                    <button type="submit" class="btn-primary">Registrar <i class="fas fa-user-check"></i></button>
+                </form>
+                <div id="registrationTime" class="time-display">
+                    <i class="fas fa-clock"></i> Hora de registro: <span id="timeDisplay">--:--:--</span>
+                </div>
+            </section>
+
+            <section class="products-section card">
+                <h2><i class="fas fa-shopping-bag"></i> Productos Disponibles</h2>
+                <div class="product-filters">
+                    <input type="text" id="productSearch" placeholder="Buscar productos...">
+                    <select id="categoryFilter">
+                        <option value="all">Todas las categorías</option>
+                        <option value="electronics">Electrónicos</option>
+                        <option value="food">Alimentos</option>
+                        <option value="clothing">Ropa</option>
+                    </select>
+                </div>
+                <div class="product-grid" id="productGrid">
+                    <!-- Productos se cargarán aquí con JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <aside class="sidebar card">
+            <h2><i class="fas fa-receipt"></i> Resumen de Compra</h2>
+            <div class="user-info">
+                <h3 id="userNameDisplay">Usuario: No registrado</h3>
+                <p id="userCedulaDisplay">Cédula: ----------</p>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">No hay productos en el carrito</p>
+            </div>
+            <div class="cart-total">
+                <p>Total: <span id="totalAmount">$0.00</span></p>
+                <button id="checkoutBtn" class="btn-success" disabled>Generar Recibo <i class="fas fa-file-invoice-dollar"></i></button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal de Recibo -->
+    <div class="modal" id="receiptModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-receipt"></i> Recibo de Compra</h2>
+            <div class="receipt-header">
+                <p>SistemaPlus - Registro y Ventas</p>
+                <p id="receiptDate">Fecha: </p>
+            </div>
+            <div class="receipt-user-info">
+                <p><strong>Cliente:</strong> <span id="receiptUserName"></span></p>
+                <p><strong>Cédula:</strong> <span id="receiptUserCedula"></span></p>
+                <p><strong>Hora de registro:</strong> <span id="receiptRegisterTime"></span></p>
+            </div>
+            <div class="receipt-items" id="receiptItems">
+                <!-- Items del recibo se generarán aquí -->
+            </div>
+            <div class="receipt-total">
+                <p><strong>TOTAL:</strong> <span id="receiptTotalAmount"></span></p>
+            </div>
+            <div class="receipt-footer">
+                <p>¡Gracias por su compra!</p>
+                <button id="printReceiptBtn" class="btn-primary"><i class="fas fa-print"></i> Imprimir Recibo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
